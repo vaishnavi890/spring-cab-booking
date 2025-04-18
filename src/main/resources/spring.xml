@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Component scanning if you're using annotations -->
+    <!-- <context:component-scan base-package="com.company.cab"/> -->
+
+    <!-- ===================== USER MODULE ===================== -->
+    <bean id="userRepository" class="com.vaishnavi.cab.booking.repository.UserRepository" />
+    <bean id="userService" class="com.vaishnavi.cab.booking.service.UserService">
+        <property name="userRepository" ref="userRepository" />
+    </bean>
+    <bean id="userController" class="com.vaishnavi.cab.booking.controller.UserController">
+        <property name="userService" ref="userService" />
+    </bean>
+
+    <!-- ===================== DRIVER MODULE ===================== -->
+    <bean id="driverRepository" class="com.vaishnavi.cab.booking.repository.DriverRepository" />
+    <bean id="driverService" class="com.vaishnavi.cab.booking.service.DriverService">
+        <property name="driverRepository" ref="driverRepository" />
+    </bean>
+    <bean id="driverController" class="com.vaishnavi.cab.booking.controller.DriverController">
+        <property name="driverService" ref="driverService" />
+    </bean>
+
+    <!-- ===================== RIDE MODULE ===================== -->
+    <bean id="rideRepository" class="com.vaishnavi.cab.booking.repository.RideRepository" />
+    <bean id="rideService" class="com.vaishnavi.cab.booking.service.RideService">
+        <property name="rideRepository" ref="rideRepository" />
+    </bean>
+    <bean id="rideController" class="com.vaishnavi.cab.booking.controller.RideController">
+        <property name="rideService" ref="rideService" />
+    </bean>
+
+    <!-- ===================== PAYMENT MODULE ===================== -->
+    <bean id="paymentRepository" class="com.vaishnavi.cab.booking.repository.PaymentRepository" />
+    <bean id="paymentService" class="com.vaishnavi.cab.booking.service.PaymentService">
+        <property name="paymentRepository" ref="paymentRepository" />
+    </bean>
+    <bean id="paymentController" class="com.vaishnavi.cab.booking.controller.PaymentController">
+        <property name="paymentService" ref="paymentService" />
+    </bean>
+
+    <!-- ===================== RATING MODULE ===================== -->
+    <bean id="ratingRepository" class="com.vaishnavi.cab.booking.repository.RatingRepository" />
+    <bean id="ratingService" class="com.vaishnavi.cab.booking.service.RatingService">
+        <property name="ratingRepository" ref="ratingRepository" />
+    </bean>
+    <bean id="ratingController" class="com.vaishnavi.cab.booking.controller.RatingController">
+        <property name="ratingService" ref="ratingService" />
+    </bean>
+
+</beans>
+
